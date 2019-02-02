@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -10,95 +11,7 @@ class HomeScreen extends StatelessWidget {
         padding: EdgeInsets.all(50.0),
         child: ListView(
           children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Expanded(
-                  flex: 1,
-                  child: new AspectRatio(
-                    aspectRatio: 250 / 250,
-                    child: new Container(
-                      decoration: new BoxDecoration(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(5.0),
-                        ),
-                        border: Border.all(
-                          width: 1.0,
-                          color: Colors.black12,
-                          style: BorderStyle.solid,
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 1.0,
-                            spreadRadius: 1.0,
-                            offset: Offset(2.0, 2.0),
-                            color: Colors.black12,
-                          ),
-                        ],
-                        image: new DecorationImage(
-                          fit: BoxFit.cover,
-                          // alignment: FractionalOffset.center,
-                          image: new NetworkImage(
-                            'https://cdn.player.one/sites/player.one/files/2016/09/24/deadpool.jpg',
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 3,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Padding(
-                        child: Text(
-                          'Ahmad Ibrahim',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 25.0,
-                            color: Color(0xFF040404),
-                          ),
-                        ),
-                        padding: EdgeInsets.only(
-                          bottom: 5.0,
-                          left: 25.0,
-                        ),
-                      ),
-                      Padding(
-                        child: Text(
-                          'Full Stack Developer',
-                          style: TextStyle(
-                            fontWeight: FontWeight.normal,
-                            fontSize: 13.0,
-                            color: Color(0xFF040404),
-                          ),
-                        ),
-                        padding: EdgeInsets.only(
-                          bottom: 5.0,
-                          left: 25.0,
-                        ),
-                      ),
-                      Padding(
-                        child: Text(
-                          'Kuala Lumpur, Malaysia',
-                          style: TextStyle(
-                            fontWeight: FontWeight.normal,
-                            fontSize: 13.0,
-                            color: Color(0xFF888888),
-                          ),
-                        ),
-                        padding: EdgeInsets.only(
-                          left: 25.0,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+            _buildProfileRow(),
             Container(
               padding: EdgeInsets.only(top: 30.0, bottom: 30.0),
               child: Text(
@@ -110,9 +23,162 @@ class HomeScreen extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-            )
+            ),
+            _buildSkills(),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildProfileRow() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        _buildProfileImg(),
+        _buildProfileDetails(),
+      ],
+    );
+  }
+
+  Widget _buildProfileImg() {
+    return Expanded(
+      flex: 1,
+      child: AspectRatio(
+        aspectRatio: 250 / 250,
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(
+              Radius.circular(5.0),
+            ),
+            border: Border.all(
+              width: 1.0,
+              color: Colors.black12,
+              style: BorderStyle.solid,
+            ),
+            boxShadow: [
+              BoxShadow(
+                blurRadius: 1.0,
+                spreadRadius: 1.0,
+                offset: Offset(1.0, 1.0),
+                color: Colors.black12,
+              ),
+            ],
+            image: DecorationImage(
+              fit: BoxFit.cover,
+              image: NetworkImage(
+                'https://cdn.player.one/sites/player.one/files/2016/09/24/deadpool.jpg',
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildProfileDetails() {
+    Widget _info(String text, int color) {
+      return Padding(
+        child: Text(
+          text,
+          style: TextStyle(
+            fontWeight: FontWeight.normal,
+            fontSize: 13.0,
+            color: Color(color),
+          ),
+        ),
+        padding: EdgeInsets.only(
+          bottom: 5.0,
+          left: 25.0,
+        ),
+      );
+    }
+
+    return Expanded(
+      flex: 3,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Padding(
+            child: Text(
+              'Ahmad Ibrahim',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 25.0,
+                color: Color(0xFF040404),
+              ),
+            ),
+            padding: EdgeInsets.only(
+              bottom: 5.0,
+              left: 25.0,
+            ),
+          ),
+          _info('Full Stack Developer', 0xFF040404),
+          _info('Kuala Lumpur, Malaysia', 0xFF888888),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSkills() {
+    final svgs = [
+      'react-original-wordmark.svg',
+      'javascript-original.svg',
+      'typescript-plain.svg',
+      'vuejs-original-wordmark.svg',
+    ];
+    Widget _skill(String s) {
+      return Expanded(
+        child: Padding(
+          padding: EdgeInsets.all(10.0),
+          child: AspectRatio(
+            aspectRatio: 480/480,
+            child: Container(
+            padding: EdgeInsets.all(15.0),
+            decoration: BoxDecoration(
+              border: Border.all(width: 0.5, color: Color(0x11000000)),
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(5.0),
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 5.0,
+                  spreadRadius: 1.0,
+                  offset: Offset(1.0, 1.0),
+                  color: Color(0x11000000),
+                ),
+              ],
+            ),
+            width: 78.0,
+            height: 78.0,
+            child: SvgPicture.asset(
+              'assets/images/' + s,
+              fit: BoxFit.cover,
+              // color: Color(0xFF007ACC),
+            ),
+          ),
+          ),
+        ),
+      );
+    }
+
+    return Container(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            'Skills',
+            style: TextStyle(
+              fontSize: 17.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Row(
+            children: svgs.map((item) => _skill(item)).toList(),
+          ),
+        ],
       ),
     );
   }
