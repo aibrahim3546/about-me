@@ -123,42 +123,41 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget _buildSkills() {
-    final svgs = [
+    final skills = [
       'react-original-wordmark.svg',
       'javascript-original.svg',
       'typescript-plain.svg',
       'vuejs-original-wordmark.svg',
+      'html5-original-wordmark.svg',
+      'css3-original-wordmark.svg',
+      'nodejs-original-wordmark.svg',
+      'express-original-wordmark.svg',
+      'mysql-original-wordmark.svg',
+      'react-original.svg',
+      'git-original-wordmark.svg',
+      'flutter-square.svg',
     ];
     Widget _skill(String s) {
-      return Expanded(
-        child: Padding(
-          padding: EdgeInsets.all(10.0),
-          child: AspectRatio(
-            aspectRatio: 480/480,
-            child: Container(
-            padding: EdgeInsets.all(15.0),
-            decoration: BoxDecoration(
-              border: Border.all(width: 0.5, color: Color(0x11000000)),
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(5.0),
-              boxShadow: [
-                BoxShadow(
-                  blurRadius: 5.0,
-                  spreadRadius: 1.0,
-                  offset: Offset(1.0, 1.0),
-                  color: Color(0x11000000),
-                ),
-              ],
+      return Container(
+        padding: EdgeInsets.all(10.0),
+        decoration: BoxDecoration(
+          border: Border.all(width: 0.5, color: Color(0x11000000)),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(5.0),
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 5.0,
+              spreadRadius: 1.0,
+              offset: Offset(1.0, 1.0),
+              color: Color(0x11000000),
             ),
-            width: 78.0,
-            height: 78.0,
-            child: SvgPicture.asset(
-              'assets/images/' + s,
-              fit: BoxFit.cover,
-              // color: Color(0xFF007ACC),
-            ),
-          ),
-          ),
+          ],
+        ),
+        width: 68.0,
+        height: 68.0,
+        child: SvgPicture.asset(
+          'assets/images/' + s,
+          fit: BoxFit.cover,
         ),
       );
     }
@@ -168,15 +167,22 @@ class HomeScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(
-            'Skills',
-            style: TextStyle(
-              fontSize: 17.0,
-              fontWeight: FontWeight.bold,
+          Padding(
+            padding: EdgeInsets.only(bottom: 15.0),
+            child: Text(
+              'Skills',
+              style: TextStyle(
+                fontSize: 17.0,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
-          Row(
-            children: svgs.map((item) => _skill(item)).toList(),
+          Wrap(
+            direction: Axis.horizontal,
+            crossAxisAlignment: WrapCrossAlignment.start,
+            spacing: 10.0,
+            runSpacing: 10.0,
+            children: skills.map((item) => _skill(item)).toList(),
           ),
         ],
       ),
