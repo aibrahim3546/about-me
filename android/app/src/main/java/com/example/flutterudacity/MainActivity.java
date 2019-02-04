@@ -1,4 +1,4 @@
-package com.example.flutterudacity;
+package com.example.aboutme;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

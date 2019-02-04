@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'screens/home.dart';
 
@@ -8,57 +9,63 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'GetDesign',
+      title: 'AboutMe',
       theme: new ThemeData(
-        primaryColor: Color(0xFFC0C1C0),
-        backgroundColor: Color(0xFF040404),
-        textTheme: TextTheme(
-          headline: TextStyle(
-            fontSize: 16.0,
+        textTheme: TextTheme(),
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            '#aibrahim3546',
+            style: TextStyle(
+              color: Color(0xFF040404),
+              fontSize: 20.0,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-          title: TextStyle(
-            fontSize: 40.0,
-          ),
-          display1: TextStyle(
-            fontSize: 13.0,
-          ),
+          elevation: 0.0,
+          backgroundColor: Color(0xFFFFFFFF),
+        ),
+        body: Container(
+          color: Color(0xFFF2F2F2),
+          padding: EdgeInsets.only(left: 40.0, right: 40.0, top: 20.0),
+          child: HomeScreen(),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset(
+                'assets/images/user-solid-circle.svg',
+                color: Color(0xFF040404),
+                fit: BoxFit.cover,
+                width: 28.0,
+                height: 28.0,
+              ),
+              title: Container(height: 0.0,),
+            ),
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset(
+                'assets/images/travel-case.svg',
+                color: Color(0xFFAAAAAA),
+                fit: BoxFit.cover,
+                width: 28.0,
+                height: 28.0,
+              ),
+              title: Container(height: 0.0,),
+            ),
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset(
+                'assets/images/github-original.svg',
+                color: Color(0xFFAAAAAA),
+                fit: BoxFit.cover,
+                width: 30.0,
+                height: 30.0,
+              ),
+              title: Container(height: 0.0,),
+            ),
+          ],
         ),
       ),
-      home: HomeScreen(),
     );
   }
 }
-
-// class PokemonRow extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       margin: EdgeInsets.all(50.0),
-//       child: ListView(
-//         children: <Widget>[
-//           Row(
-//             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//             children: <Widget>[
-//               Expanded(
-//                 child: Image.network(
-//                   'https://upload.wikimedia.org/wikipedia/en/3/39/Pokeball.PNG',
-//                   fit: BoxFit.cover,
-//                   // width: 20.0,
-//                   // height: 20.0,
-//                 ),
-//               ),
-//               Expanded(
-//                 child: Image.network(
-//                   'https://upload.wikimedia.org/wikipedia/en/3/39/Pokeball.PNG',
-//                   fit: BoxFit.cover,
-//                   // width: 20.0,
-//                   // height: 20.0,
-//                 ),
-//               )
-//             ],
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }

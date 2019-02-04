@@ -4,37 +4,30 @@ import 'package:flutter_svg/svg.dart';
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomPadding: false,
-      body: Container(
-        color: Color(0xFFFFFFFF),
-        padding: EdgeInsets.all(50.0),
-        child: ListView(
-          children: <Widget>[
-            _buildProfileRow(),
-            Container(
-              padding: EdgeInsets.only(top: 30.0, bottom: 30.0),
-              child: Text(
-                'A JavaScript ecosystem enthuasiast. Over 1+ year of experience in commercial projects in entertainment and digital payments.',
-                style: TextStyle(
-                  height: 1.25,
-                  color: Color(0xFF040404),
-                  fontSize: 15.0,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
+    return ListView(
+      children: <Widget>[
+        _buildProfileRow(),
+        Padding(
+          padding: EdgeInsets.only(top: 30.0, bottom: 30.0),
+          child: Text(
+            'A JavaScript ecosystem enthuasiast. Over 1+ year of experience in commercial projects in entertainment and digital payments.',
+            style: TextStyle(
+              height: 1.25,
+              color: Color(0xFF040404),
+              fontSize: 15.0,
+              fontWeight: FontWeight.w600,
             ),
-            _buildSkills(),
-          ],
+          ),
         ),
-      ),
+        _buildSkills(),
+        _buildExperience(),
+      ],
     );
   }
 
   Widget _buildProfileRow() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         _buildProfileImg(),
         _buildProfileDetails(),
@@ -50,7 +43,7 @@ class HomeScreen extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(
-              Radius.circular(5.0),
+              Radius.circular(100.0),
             ),
             border: Border.all(
               width: 1.0,
@@ -68,7 +61,7 @@ class HomeScreen extends StatelessWidget {
             image: DecorationImage(
               fit: BoxFit.cover,
               image: NetworkImage(
-                'https://cdn.player.one/sites/player.one/files/2016/09/24/deadpool.jpg',
+                'https://pbs.twimg.com/profile_images/1084160351216652288/iDkgBYX2_400x400.jpg',
               ),
             ),
           ),
@@ -180,12 +173,164 @@ class HomeScreen extends StatelessWidget {
           Wrap(
             direction: Axis.horizontal,
             crossAxisAlignment: WrapCrossAlignment.start,
-            spacing: 10.0,
-            runSpacing: 10.0,
+            spacing: 19.0,
+            runSpacing: 16.0,
             children: skills.map((item) => _skill(item)).toList(),
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildExperience() {
+    final journeysList = [
+      {
+        'title': 'Graduated',
+        'company': 'Beginning',
+        'date': 'Nov 2017',
+      },
+      {
+        'title': 'Ass. Full Stack Developer',
+        'company': 'Revenue Monster',
+        'date': 'Dec 2017',
+      },
+    ];
+    Widget _experience(journey) {
+      return Expanded(
+        flex: 1,
+        child: Row(
+          children: <Widget>[
+            Expanded(
+              flex: 1,
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    flex: journeysList[0]['title'] == journey['title'] ? 1 : 0,
+                    child: Container(
+                      height: 7.0,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(2.0),
+                        color: Color(0xFF999999),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: journeysList[0]['title'] == journey['title'] ? 9 : 10,
+                    child: Container(
+                      height: 5.0,
+                      color: Color(0xFF999999),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: Container(
+                      height: 10.0,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(2.0),
+                        color: Color(0xFF040404),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 10,
+                    child: Container(
+                      height: 5.0,
+                      color: Color(0xFF999999),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            // ),
+          ],
+        ),
+      );
+    }
+
+    Widget _experienceDetails(journey) {
+      return Expanded(
+        flex: 1,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Expanded(
+              flex: 1,
+              child: Column(
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(top: 10.0),
+                    child: Text(
+                      journey['title'],
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 12.0,
+                        color: Color(0xFF040404),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 1.5),
+                    child: Text(
+                      journey['company'],
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 12.0,
+                        color: Color(0xFF333333),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 1.5),
+                    child: Text(
+                      journey['date'],
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 11.0,
+                        color: Color(0xFF666666),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Padding(
+          padding: EdgeInsets.only(top: 30.0, bottom: 15.0),
+          child: Text(
+            'My Journey',
+            style: TextStyle(
+              fontSize: 17.0,
+              fontWeight: FontWeight.bold,
+            ),
+            textAlign: TextAlign.start,
+          ),
+        ),
+        Container(
+          child: Row(
+            children: journeysList
+                .map((journey) => _experience(journey))
+                .toList(),
+          ),
+        ),
+        Container(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: journeysList
+                .map((journey) => _experienceDetails(journey))
+                .toList(),
+          ),
+        ),
+      ],
     );
   }
 }
