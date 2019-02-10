@@ -4,13 +4,15 @@ import 'package:flutter_svg/svg.dart';
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return Padding(
+      padding: EdgeInsets.only(left: 40.0, right: 40.0, top: 20.0, bottom: 20.0),
+      child: ListView(
       children: <Widget>[
         _buildProfileRow(),
         Padding(
           padding: EdgeInsets.only(top: 30.0, bottom: 30.0),
           child: Text(
-            'A JavaScript ecosystem enthuasiast. Over 1+ year of experience in commercial projects in entertainment and digital payments.',
+            'A JavaScript ecosystem enthusiast. Over 1+ year of experience in commercial projects in entertainment and digital payments.',
             style: TextStyle(
               height: 1.25,
               color: Color(0xFF040404),
@@ -22,6 +24,7 @@ class HomeScreen extends StatelessWidget {
         _buildSkills(),
         _buildExperience(),
       ],
+    ),
     );
   }
 
@@ -316,9 +319,8 @@ class HomeScreen extends StatelessWidget {
         ),
         Container(
           child: Row(
-            children: journeysList
-                .map((journey) => _experience(journey))
-                .toList(),
+            children:
+                journeysList.map((journey) => _experience(journey)).toList(),
           ),
         ),
         Container(
