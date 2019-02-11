@@ -4,15 +4,27 @@ My curriculum vitae app. Clone this app to checkout my programming skills.
 
 ## GraphQL
 
-This app uses (GitHub API)[https://developer.github.com/v4/guides/] to get all the repositories.
-I am using GitHub API v4, the v4 API are using GraphQL instead of REST API. Check out (GraphQL)[https://graphql.org/] on how to queries (GET in REST API) and mutations(POST, PUT, DELETE in REST API) work.
+This app uses [GitHub API](https://developer.github.com/v4/guides/) to get all the repositories. You need to generate a GitHub personal access token.
+I am using GitHub API v4, the v4 API are using GraphQL instead of REST API. Check out [GraphQL](https://graphql.org/) on how to queries (GET in REST API) and mutations(POST, PUT, DELETE in REST API) work.
 
 ## Getting Started
 
 ```
-	git clone https://github.com/aibrahim3546/about-me.git
-	flutter run
+git clone https://github.com/aibrahim3546/aboutme.git
+cd aboutme
 ```
+
+Create a config file
+/lib/config.dart
+```
+final String accessToken = '<GitHub Personal Access Token Here>';
+```
+
+Run the app
+```
+flutter run
+```
+
 
 ### iOS issues
 If you hit this error when running on iOS
@@ -33,5 +45,5 @@ Xcode's output:
 Could not build the application for the simulator.
 ```
 
-You can solve this by following this solution on (stackoverflow)[https://stackoverflow.com/questions/50671286/flutter-h-not-found-error]
+You can solve this by following this solution on [stackoverflow](https://stackoverflow.com/questions/50671286/flutter-h-not-found-error)
 
