@@ -4,8 +4,9 @@ My curriculum vitae app. Clone this app to checkout my programming skills.
 
 ## GraphQL
 
-This app uses [GitHub API](https://developer.github.com/v4/guides/) to get all the repositories. You need to generate a GitHub personal access token.
-I am using GitHub API v4, the v4 API are using GraphQL instead of REST API. Check out [GraphQL](https://graphql.org/) on how to queries (GET in REST API) and mutations(POST, PUT, DELETE in REST API) work.
+This app uses [GitHub API](https://developer.github.com/v4/guides/) to get all the repositories. You need to generate a GitHub personal access token in order to get the all your repos.
+
+This app are using GitHub API v4, the v4 API are using GraphQL instead of usual REST API. Check out [GraphQL](https://graphql.org/) on how queries and mutations work.
 
 ## Getting Started
 
