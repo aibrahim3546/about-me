@@ -4,6 +4,8 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 
 import 'screens/home.dart';
 import 'screens/github.dart';
+import 'screens/contact.dart';
+
 import 'config.dart' as config;
 
 void main() => runApp(MyApp());
@@ -17,13 +19,13 @@ class _MyAppState extends State<MyApp> {
   String appBarTitle = '#aibrahim3546';
   final List<Widget> mainScreen = [
     HomeScreen(),
-    HomeScreen(),
     GithHubScreen(),
+    ContactScreen(),
   ];
   final List titles = [
     '#aibrahim3546',
-    'Find Me',
     'GitHub Repos',
+    'Find Me',
   ];
 
   @override
@@ -92,18 +94,17 @@ class _MyAppState extends State<MyApp> {
                 ),
               ),
               BottomNavigationBarItem(
-                icon: _svgIcon(normalColor, 'assets/images/travel-case.svg'),
+                icon:
+                    _svgIcon(normalColor, 'assets/images/github-original.svg'),
                 activeIcon:
-                    _svgIcon(activeColor, 'assets/images/travel-case.svg'),
+                    _svgIcon(activeColor, 'assets/images/github-original.svg'),
                 title: Container(
                   height: 0.0,
                 ),
               ),
               BottomNavigationBarItem(
-                icon:
-                    _svgIcon(normalColor, 'assets/images/github-original.svg'),
-                activeIcon:
-                    _svgIcon(activeColor, 'assets/images/github-original.svg'),
+                icon: _svgIcon(normalColor, 'assets/images/coffee.svg'),
+                activeIcon: _svgIcon(activeColor, 'assets/images/coffee.svg'),
                 title: Container(
                   height: 0.0,
                 ),

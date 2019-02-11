@@ -1,16 +1,37 @@
 # aboutme
 
-A new Flutter project.
+My curriculum vitae app. Clone this app to checkout my programming skills.
+
+## GraphQL
+
+This app uses (GitHub API)[https://developer.github.com/v4/guides/] to get all the repositories.
+I am using GitHub API v4, the v4 API are using GraphQL instead of REST API. Check out (GraphQL)[https://graphql.org/] on how to queries (GET in REST API) and mutations(POST, PUT, DELETE in REST API) work.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+```
+	git clone https://github.com/aibrahim3546/about-me.git
+	flutter run
+```
 
-A few resources to get you started if this is your first Flutter project:
+### iOS issues
+If you hit this error when running on iOS
+```
+Failed to build iOS app
+Error output from Xcode build:
+↳
+    ** BUILD FAILED **
 
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
+Xcode's output:
+↳
+    === BUILD TARGET Runner OF PROJECT Runner WITH CONFIGURATION Debug ===
+		...
+  	fatal error: 'Flutter/Flutter.h' file not found
+    #import <Flutter/Flutter.h>
+            ^~~~~~~~~~~~~~~~~~~
+    1 error generated.
+Could not build the application for the simulator.
+```
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+You can solve this by following this solution on (stackoverflow)[https://stackoverflow.com/questions/50671286/flutter-h-not-found-error]
+
