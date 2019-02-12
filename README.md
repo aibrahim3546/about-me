@@ -27,6 +27,7 @@ Run the app
 flutter run
 ```
 
+**Side note: I only tried this app on ios simulator.**
 
 ### iOS issues
 If you hit this error when running on iOS
